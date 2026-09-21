@@ -1,0 +1,1 @@
+print("This number is negative." if (x := int(input())) < 0 else "This number is positive." if x > 0 else "This number is both positive and negative.")
