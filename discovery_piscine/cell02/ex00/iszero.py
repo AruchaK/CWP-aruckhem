@@ -1,5 +1,1 @@
-x = int(input())
-if x == 0:
-    print("This number is equal to zero.")
-else:
-    print("This number is different from zero.")
+print("This number is equal to zero." if int(input()) == 0 else "This number is different from zero.")
