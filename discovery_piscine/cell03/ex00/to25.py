@@ -1,0 +1,1 @@
+x = int(input()); print("Error" if x > 25 else "\n".join(f"Inside the loop, my variable is: {i}" for i in range(x, 26)))
