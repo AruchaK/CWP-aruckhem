@@ -1,8 +1,2 @@
 import sys
-
-if len(sys.argv) == 1:
-    print("none")
-else:
-    for word in sys.argv[1:]:
-        if not word.endswith("ism"):
-            print(word + "ism")
+print("none") if len(sys.argv) == 1 else [print(word + "ism") for word in sys.argv[1:] if not word.endswith("ism")]
