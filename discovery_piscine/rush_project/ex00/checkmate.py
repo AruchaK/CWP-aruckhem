@@ -27,16 +27,18 @@ def checkmate(board):
 
     king_row, king_col = king
 
-    # Pawn check
-    for dc in (-1, 1):
+    # check pawn ข้างล่างซ้าย-ขวา ว่ามี pawn อยู่ไหม
+    for column_step in (-1, 1):
         row = king_row + 1
-        col = king_col + dc
+        col = king_col + column_step
 
+        # check ก่อนว่าตำแหน่งไม่เกินขอบตาราง
         if 0 <= row < size and 0 <= col < size:
             if board[row][col] == "P":
                 print("Success")
                 return
 
+    # direction ทั้งหมดที่ต้องเช็ค
     directions = [
         (-1, 0),
         (1, 0),
@@ -48,26 +50,28 @@ def checkmate(board):
         (1, 1)
     ]
 
-    for dr, dc in directions:
-        row = king_row + dr
-        col = king_col + dc
+    # check ทีละ direction
+    for row_step, column_step in directions:
+        row = king_row + row_step
+        col = king_col + column_step
 
+        # check ทีละ direction ขึ้นไปเรื่อยๆ จนกว่าจะเจอหมาก หรือเกินขอบตาราง
         while 0 <= row < size and 0 <= col < size:
             piece = board[row][col]
 
             if piece in "PBRQK":
-                if dr == 0 or dc == 0:
+                if row_step == 0 or column_step == 0: # แนวตรง
                     if piece == "R" or piece == "Q":
                         print("Success")
                         return
                 else:
-                    if piece == "B" or piece == "Q":
+                    if piece == "B" or piece == "Q": # แนวทแยง
                         print("Success")
                         return
 
                 break
 
-            row += dr
-            col += dc
+            row += row_step
+            col += column_step
 
     print("Fail")
